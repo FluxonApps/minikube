@@ -17,6 +17,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # removing kind's crictl config
     && rm /etc/crictl.yaml
 
+RUN curl https://download.docker.com/linux/ubuntu/dists/focal/pool/test/amd64/containerd.io_1.2.13-2_amd64.deb -o containerd.deb && dpkg -i containerd.deb
+RUN curl https://download.docker.com/linux/ubuntu/dists/focal/pool/test/amd64/docker-ce-cli_19.03.13~1.2.beta2-0~ubuntu-focal_amd64.deb -o dockercli.deb && dpkg -i dockercli.deb
 RUN curl https://download.docker.com/linux/ubuntu/dists/focal/pool/test/amd64/docker-ce_19.03.13~1.2.beta2-0~ubuntu-focal_amd64.deb -o docker.deb && dpkg -i docker.deb
 
 # Install cri-o/podman dependencies:
