@@ -9,7 +9,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     lz4 \
     gnupg \ 
     sudo \
-    docker.io \
     openssh-server \
     dnsutils \
     runc \
@@ -17,6 +16,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libglib2.0-0 \
     # removing kind's crictl config
     && rm /etc/crictl.yaml
+
+RUN curl https://download.docker.com/linux/ubuntu/dists/focal/pool/test/amd64/docker-ce_19.03.13~1.2.beta2-0~ubuntu-focal_amd64.deb -o docker.deb && dpkg -i docker.deb
 
 # Install cri-o/podman dependencies:
 RUN sh -c "echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list" && \ 
